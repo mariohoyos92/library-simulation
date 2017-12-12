@@ -1,1 +1,24 @@
+.authview-cont {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.authview-card p {
+  color: #4e1e29;
+  font-size: 2.5em;
+}
+
+.authview-card img {
+  margin-top: 5vh;
+  height: 15vh;
+  width: 15vw;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

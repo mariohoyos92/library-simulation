@@ -11,6 +11,11 @@
   font-size: 1.5em;
 }
 
+.label-font {
+  font-family: "Alegreya", serif;
+  font-size: 1.5em;
+}
+
 .nav-left {
   display: flex;
   flex-direction: row;
@@ -28,4 +33,9 @@
   padding-right: 3vw;
   font-family: "Open Sans", sans-serif;
   font-size: 0.75em;
+}
+
+.logout:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }

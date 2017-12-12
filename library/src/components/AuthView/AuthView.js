@@ -55,7 +55,6 @@ class AuthView extends Component {
         password: this.state.userPass
       })
       .then(res => {
-        console.log(res);
         this.setState({ loggedIn: true });
         this.props.history.push("/browseview");
       })
@@ -66,9 +65,9 @@ class AuthView extends Component {
   render() {
     return (
       <div className="authview-cont">
-        <div className="authview-card">
+        <div className="authview-card browser-card">
           <img src={maroonLogo} alt="logo" />
-          <p>Book Exchange </p>
+          <p className="label-font">Book Exchange </p>
           <div className="authview-inputs">
             Username{" "}
             <input
