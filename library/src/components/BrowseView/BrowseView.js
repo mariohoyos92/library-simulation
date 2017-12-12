@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Navigation from "../Navigation/Navigation";
+
 //IMPORT CSS
 import "./BrowseView.css";
 
@@ -20,7 +22,11 @@ class BrowseView extends Component {
 
   //RENDER
   render() {
-    return <div />;
+    return (
+      <div>
+        <Navigation />
+      </div>
+    );
   }
 }
 
