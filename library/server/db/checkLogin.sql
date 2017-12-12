@@ -1,0 +1,1 @@
+SELECT * FROM libraryusers WHERE username = $1 AND password = $2;
