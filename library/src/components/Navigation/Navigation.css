@@ -29,13 +29,18 @@
   height: auto;
 }
 
+.navlink {
+  text-decoration: none;
+  color: #c6b38e;
+}
+
+.navlink:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .logout {
   padding-right: 3vw;
   font-family: "Open Sans", sans-serif;
   font-size: 0.75em;
-}
-
-.logout:hover {
-  cursor: pointer;
-  opacity: 0.5;
 }

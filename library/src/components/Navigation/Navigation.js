@@ -28,11 +28,17 @@ class Navigation extends Component {
       <div className="nav-container">
         <div className="nav-left">
           <img src={logo} alt="logo" />
-          <p>Browse</p>
-          <p>Cart</p>
-          <p>My Shelf</p>
+          <Link className="navlink" to="/browseview">
+            <p>Browse</p>
+          </Link>
+          <Link className="navlink" to="/cart">
+            <p>Cart</p>
+          </Link>
+          <Link className="navlink" to="/shelf">
+            <p>My Shelf</p>
+          </Link>
         </div>
-        <p className="logout" onClick={() => this.handleLogout()}>
+        <p className="navlink logout" onClick={() => this.handleLogout()}>
           Logout
         </p>
       </div>
