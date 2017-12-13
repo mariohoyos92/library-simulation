@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
+import axios from "axios";
+
 import Navigation from "../Navigation/Navigation";
+import DetailsButton from "../DetailsButton/DetailsButton";
 
 //IMPORT CSS
 import "./BrowseView.css";
@@ -9,14 +12,29 @@ class BrowseView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: false
+      books: []
     };
 
     //BIND FUNCTIONS HERE
   }
 
   //LIFESTYLE FUNCTIONS
+  componentDidMount() {
+    axios
+      .get("/api/logstatus")
+      .then(res => {
+        console.log(res);
+        !res.data.loggedin && this.props.history.push("/");
+      })
+      .catch(console.log);
 
+    axios
+      .get("/api/books")
+      .then(res => {
+        this.setState({ books: res });
+      })
+      .catch(console.log());
+  }
   //CUSTOM FUNCS
 
   //RENDER
@@ -43,6 +61,7 @@ class BrowseView extends Component {
             <div className="browser-display" />
             <div className="browser-footer">
               <button>+ Add New Book</button>
+              <DetailsButton id="1" />
             </div>
           </div>
         </div>

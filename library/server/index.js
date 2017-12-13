@@ -28,10 +28,35 @@ massive(connectionString)
 app.use(json());
 app.use(cors());
 
+// Book Handling Endpoints
+
+app.get("/api/books", (req, res, next) => {
+  app
+    .get("db")
+    .getAllBooks()
+    .then(books => {
+      res.status(200).json(books);
+    })
+    .catch(console.log);
+});
+
+app.get("/api/books/:id", (req, res, next) => {
+  app
+    .get("db")
+    .getBookDetails([req.params.id])
+    .then(bookDetails => {
+      res.status(200).json(bookDetails[0]);
+    })
+    .catch(console.log);
+});
+
 // AUTHENTICATION AND LOGOUT ENDPOINTS
 
+app.get("/api/logstatus", (req, res, next) => {
+  res.status(200).json(req.session);
+});
+
 app.post("/api/auth/register", (req, res, next) => {
-  //add user to the database via username and password
   app
     .get("db")
     .addNewUser([req.body.username, req.body.password])
@@ -49,16 +74,15 @@ app.post("/api/auth/login", (req, res, next) => {
     .get("db")
     .checkLogin([req.body.username, req.body.password])
     .then(response => {
-      console.log(response);
       req.session.username = response[0].username;
       req.session.ident = response[0].id;
+      req.session.loggedin = true;
       res.status(200).json(req.session);
     })
     .catch(res.status(500));
 });
 
 app.post("/api/auth/logout", (req, res, next) => {
-  console.log(req);
   req.session.destroy();
   res.status(200).json("logged out");
 });

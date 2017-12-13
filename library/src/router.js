@@ -6,6 +6,7 @@ import AuthView from "./components/AuthView/AuthView";
 import BrowseView from "./components/BrowseView/BrowseView";
 import CartView from "./components/CartView/CartView";
 import MyShelf from "./components/MyShelf/MyShelf";
+import BookDetails from "./components/BookDetails/BookDetails";
 
 export default (
   <Switch>
@@ -13,5 +14,6 @@ export default (
     <Route path="/browseview" component={BrowseView} />
     <Route path="cart" component={CartView} />
     <Route path="shelf" component={MyShelf} />
+    <Route path="/details" component={BookDetails} />
   </Switch>
 );
