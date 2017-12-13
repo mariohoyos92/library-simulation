@@ -50,6 +50,32 @@ app.get("/api/books/:id", (req, res, next) => {
     .catch(console.log);
 });
 
+// Cart Endpoints
+
+app.post("/api/cart", (req, res, next) => {
+  if (req.session.cart) {
+    app
+      .get("db")
+      .getBookDetails([req.body.id])
+      .then(response => {
+        req.session.cart.push(response[0]);
+        console.log(response[0]);
+        console.log(req.session.cart);
+        res.status(200).send(req.session.cart);
+      })
+      .catch(console.log);
+  } else {
+    app
+      .get("db")
+      .getBookDetails([req.body.id])
+      .then(response => {
+        req.session.cart = response;
+        res.status(200).send(req.session.cart);
+      })
+      .catch(console.log);
+  }
+});
+
 // AUTHENTICATION AND LOGOUT ENDPOINTS
 
 app.get("/api/logstatus", (req, res, next) => {

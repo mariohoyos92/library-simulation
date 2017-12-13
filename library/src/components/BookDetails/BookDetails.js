@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Navigation from "../Navigation/Navigation";
 
@@ -21,6 +22,8 @@ class BookDetails extends Component {
     };
 
     //BIND FUNCTIONS HERE
+    this.delete = this.delete.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   //LIFESTYLE FUNCTIONS
@@ -32,23 +35,38 @@ class BookDetails extends Component {
     axios
       .get(`/api/books/${bookId}`)
       .then(book => {
-        this.setState(
-          {
-            title: book.data.book_title,
-            author: book.data.book_author,
-            description: book.data.book_description,
-            genre: book.data.book_genre,
-            id: book.data.book_id,
-            img: book.data.book_img,
-            inStock: book.data.book_author
-          },
-          () => console.log(this.state)
-        );
+        this.setState({
+          title: book.data.book_title,
+          author: book.data.book_author,
+          description: book.data.book_description,
+          genre: book.data.book_genre,
+          id: book.data.book_id,
+          img: book.data.book_img,
+          inStock: book.data.book_author
+        });
       })
       .catch(console.log);
   }
 
   //CUSTOM FUNCS
+  delete() {
+    axios
+      .delete(`/api/book/${this.state.id}`)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(console.log);
+  }
+
+  addToCart() {
+    let id = this.state.id;
+    axios
+      .post("/api/cart", { id: id })
+      .then(response => {
+        this.props.history.push("/browseview");
+      })
+      .catch(console.log);
+  }
 
   //RENDER
   render() {
@@ -64,6 +82,11 @@ class BookDetails extends Component {
             <p>Genre: {this.state.genre}</p>
             <p>In Stock: {this.state.inStock}</p>
             <p>Description: {this.state.description}</p>
+            <Link to={`/edit/:${this.state.id}`}>
+              <button> Edit</button>
+            </Link>
+            <button onClick={this.delete}>Delete</button>
+            <button onClick={this.addToCart}>+ Add To Cart </button>
           </div>
         </div>
       </div>
