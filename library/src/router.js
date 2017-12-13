@@ -8,6 +8,7 @@ import CartView from "./components/CartView/CartView";
 import MyShelf from "./components/MyShelf/MyShelf";
 import BookDetails from "./components/BookDetails/BookDetails";
 import EditView from "./components/EditView/EditView";
+import AddView from "./components/AddView/AddView";
 
 export default (
   <Switch>
@@ -17,5 +18,6 @@ export default (
     <Route path="/shelf" component={MyShelf} />
     <Route path="/details" component={BookDetails} />
     <Route path="/edit" component={EditView} />
+    <Route path="/add" component={AddView} />
   </Switch>
 );

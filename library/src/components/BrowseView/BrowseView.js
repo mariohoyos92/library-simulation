@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Navigation from "../Navigation/Navigation";
 
@@ -55,7 +56,6 @@ class BrowseView extends Component {
   }
 
   handleGenre(e) {
-    console.log(e.target.value);
     this.setState({ genre: e.target.value });
   }
 
@@ -77,7 +77,7 @@ class BrowseView extends Component {
         );
       });
 
-    this.state.genre
+    this.state.genre !== "none" && this.state.genre
       ? (bookList = this.state.books
           .filter(book => book.book_genre === this.state.genre)
           .map(item => {
@@ -111,6 +111,23 @@ class BrowseView extends Component {
             );
           }))
       : "";
+    this.state.outStock
+      ? (bookList = this.state.books
+          .filter(book => book.book_stock === "No")
+          .map(item => {
+            return (
+              <Book
+                key={Math.random()}
+                title={item.book_title}
+                author={item.book_author}
+                img={item.book_img}
+                inStock={item.book_stock}
+                id={item.book_id}
+                src="browse"
+              />
+            );
+          }))
+      : "";
 
     return (
       <div>
@@ -123,7 +140,7 @@ class BrowseView extends Component {
                 In Stock: <input type="checkbox" onClick={this.handleInStock} />
                 Out Of Stock:<input
                   type="checkbox"
-                  onClick={this.state.handleOutStock}
+                  onClick={this.handleOutStock}
                 />
                 Genre:{" "}
                 <select onChange={this.handleGenre}>
@@ -137,7 +154,9 @@ class BrowseView extends Component {
             <div className="browser-display" />
             <div className="browser-footer">
               {bookList}
-              <button>+ Add New Book</button>
+              <Link to="/add">
+                <button>+ Add New Book</button>
+              </Link>
             </div>
           </div>
         </div>

@@ -60,6 +60,20 @@ app.delete("/api/book/:id", (req, res, next) => {
     .catch(console.log);
 });
 
+app.post("/api/books", (req, res, next) => {
+  app
+    .get("db")
+    .addNewBook([
+      req.body.title,
+      req.body.author,
+      req.body.genre,
+      req.body.inStock,
+      req.body.description,
+      req.body.img
+    ])
+    .then(resp => res.status(200).json("book added!"));
+});
+
 // Cart Endpoints
 
 app.get("/api/cart", (req, res, next) => {
