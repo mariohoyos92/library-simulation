@@ -50,7 +50,25 @@ app.get("/api/books/:id", (req, res, next) => {
     .catch(console.log);
 });
 
+app.delete("/api/book/:id", (req, res, next) => {
+  app
+    .get("db")
+    .deleteBookFromDb([req.params.id])
+    .then(response => {
+      res.status(200).json("book is deleted");
+    })
+    .catch(console.log);
+});
+
 // Cart Endpoints
+
+app.get("/api/cart", (req, res, next) => {
+  if (req.session.cart) {
+    res.status(200).json(req.session.cart);
+  } else {
+    res.status(200).json([]);
+  }
+});
 
 app.post("/api/cart", (req, res, next) => {
   if (req.session.cart) {
@@ -59,8 +77,6 @@ app.post("/api/cart", (req, res, next) => {
       .getBookDetails([req.body.id])
       .then(response => {
         req.session.cart.push(response[0]);
-        console.log(response[0]);
-        console.log(req.session.cart);
         res.status(200).send(req.session.cart);
       })
       .catch(console.log);
@@ -74,6 +90,12 @@ app.post("/api/cart", (req, res, next) => {
       })
       .catch(console.log);
   }
+});
+
+app.delete("/api/cart/:id", (req, res, next) => {
+  req.session.cart.splice(req.params.id, 1);
+  console.log(req.session.cart);
+  res.status(200).json(req.session.cart);
 });
 
 // AUTHENTICATION AND LOGOUT ENDPOINTS
@@ -95,7 +117,6 @@ app.post("/api/auth/register", (req, res, next) => {
 });
 
 app.post("/api/auth/login", (req, res, next) => {
-  console.log(req.body);
   app
     .get("db")
     .checkLogin([req.body.username, req.body.password])

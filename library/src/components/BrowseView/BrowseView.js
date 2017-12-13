@@ -55,7 +55,7 @@ class BrowseView extends Component {
       this.state.books.map(item => {
         return (
           <Book
-            key={item.book_id}
+            key={Math.random()}
             title={item.book_title}
             author={item.book_author}
             img={item.book_img}

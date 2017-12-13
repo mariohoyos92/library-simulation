@@ -53,7 +53,7 @@ class BookDetails extends Component {
     axios
       .delete(`/api/book/${this.state.id}`)
       .then(response => {
-        console.log(response);
+        this.props.history.push("/browseview");
       })
       .catch(console.log);
   }
