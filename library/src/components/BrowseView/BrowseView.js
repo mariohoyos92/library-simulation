@@ -13,7 +13,9 @@ class BrowseView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      inStock: false,
+      outStock: false
     };
 
     //BIND FUNCTIONS HERE
@@ -38,6 +40,14 @@ class BrowseView extends Component {
   }
   //CUSTOM FUNCS
 
+  handleInStock() {
+    this.setState({ inStock: !this.state.inStock });
+  }
+
+  handleOutStock() {
+    this.setState({ outStock: !this.state.outStock });
+  }
+
   //RENDER
   render() {
     const bookList =
@@ -45,6 +55,7 @@ class BrowseView extends Component {
       this.state.books.map(item => {
         return (
           <Book
+            key={item.book_id}
             title={item.book_title}
             author={item.book_author}
             img={item.book_img}
@@ -63,13 +74,17 @@ class BrowseView extends Component {
             <div className="browser-header">
               <p> Browse Inventory</p>
               <div className="filter-container">
-                In Stock: <input type="checkbox" />
-                Out Of Stock:<input type="checkbox" />
+                In Stock:{" "}
+                <input type="checkbox" onClick={() => this.handleInStock} />
+                Out Of Stock:<input
+                  type="checkbox"
+                  onClick={() => this.state.handleOutStock}
+                />
                 Genre:{" "}
                 <select>
                   <option value="none">None</option>
                   <option value="Horror">Horror</option>
-                  <option value="Mystery">Mystery</option>
+                  <option value="Mystery">Fiction</option>
                   <option value="NonFiction">NonFiction</option>
                 </select>
               </div>

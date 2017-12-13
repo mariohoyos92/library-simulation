@@ -55,7 +55,17 @@ class BookDetails extends Component {
     return (
       <div>
         <Navigation />
-        <div className="browser-view" />
+        <div className="browser-view">
+          <div>
+            <button onClick={() => this.props.history.goBack()}>Go Back</button>
+            <img src={this.state.img} />
+            <p>Title: {this.state.title}</p>
+            <p>Author: {this.state.author}</p>
+            <p>Genre: {this.state.genre}</p>
+            <p>In Stock: {this.state.inStock}</p>
+            <p>Description: {this.state.description}</p>
+          </div>
+        </div>
       </div>
     );
   }
