@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import axios from "axios";
 
 import Navigation from "../Navigation/Navigation";
-import DetailsButton from "../DetailsButton/DetailsButton";
+
+import Book from "../Book/Book";
 
 //IMPORT CSS
 import "./BrowseView.css";
@@ -23,7 +24,6 @@ class BrowseView extends Component {
     axios
       .get("/api/logstatus")
       .then(res => {
-        console.log(res);
         !res.data.loggedin && this.props.history.push("/");
       })
       .catch(console.log);
@@ -31,7 +31,8 @@ class BrowseView extends Component {
     axios
       .get("/api/books")
       .then(res => {
-        this.setState({ books: res });
+        console.log(res);
+        this.setState({ books: res.data });
       })
       .catch(console.log());
   }
@@ -39,6 +40,21 @@ class BrowseView extends Component {
 
   //RENDER
   render() {
+    const bookList =
+      this.state.books.length > 0 &&
+      this.state.books.map(item => {
+        return (
+          <Book
+            title={item.book_title}
+            author={item.book_author}
+            img={item.book_img}
+            inStock={item.book_stock}
+            id={item.book_id}
+            src="browse"
+          />
+        );
+      });
+
     return (
       <div>
         <Navigation />
@@ -60,8 +76,8 @@ class BrowseView extends Component {
             </div>
             <div className="browser-display" />
             <div className="browser-footer">
+              {bookList}
               <button>+ Add New Book</button>
-              <DetailsButton id="1" />
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import DetailsButton from "../DetailsButton/DetailsButton";
+
 import Navigation from "../Navigation/Navigation";
 
 //IMPORT CSS
@@ -14,14 +16,53 @@ class Book extends Component {
   }
 
   //LIFESTYLE FUNCTIONS
+  componentDidMount() {}
 
   //CUSTOM FUNCS
 
   //RENDER
   render() {
-    const { title, author, src, img, inStock } = this.props;
+    const {
+      title,
+      author,
+      src,
+      img,
+      inStock,
+      handleRemoveFromCart,
+      id,
+      returnBook
+    } = this.props;
 
-    return <div className="book-container" />;
+    let secondaryButton;
+
+    if (src === "browse") {
+      secondaryButton = "";
+    } else if (src === "cart") {
+      secondaryButton = (
+        <button onClick={() => handleRemoveFromCart(id)}>
+          - Remove From Cart
+        </button>
+      );
+    } else if (src === "shelf") {
+      secondaryButton = (
+        <button onClick={() => returnBook(id)}>- Return Book</button>
+      );
+    }
+
+    return (
+      <div className="book-container">
+        <img src={img} alt="bookcover" />
+        <div className="title-author">
+          <p>{title}</p>
+          <p>{author}</p>
+        </div>
+        <div>
+          {src === "browse" || src === "cart" ? <p>In Stock: {inStock}</p> : ""}
+          <DetailsButton id={id} />
+          {secondaryButton}
+        </div>
+      </div>
+    );
   }
 }
 
