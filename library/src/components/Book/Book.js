@@ -31,7 +31,7 @@ class Book extends Component {
       handleRemoveFromCart,
       id,
       returnBook,
-      key
+      deleteKey
     } = this.props;
 
     let secondaryButton;
@@ -40,7 +40,7 @@ class Book extends Component {
       secondaryButton = "";
     } else if (src === "cart") {
       secondaryButton = (
-        <button onClick={() => handleRemoveFromCart(key)}>
+        <button onClick={() => handleRemoveFromCart(deleteKey)}>
           - Remove From Cart
         </button>
       );

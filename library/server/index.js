@@ -94,7 +94,7 @@ app.post("/api/cart", (req, res, next) => {
 
 app.delete("/api/cart/:id", (req, res, next) => {
   req.session.cart.splice(req.params.id, 1);
-  console.log(req.session.cart);
+
   res.status(200).json(req.session.cart);
 });
 

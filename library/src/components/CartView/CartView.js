@@ -47,6 +47,7 @@ class CartView extends Component {
         return (
           <Book
             key={this.state.cart.indexOf(item)}
+            deleteKey={this.state.cart.indexOf(item)}
             title={item.book_title}
             author={item.book_author}
             img={item.book_img}
