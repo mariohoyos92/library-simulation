@@ -42,7 +42,7 @@ class BookDetails extends Component {
           genre: book.data.book_genre,
           id: book.data.book_id,
           img: book.data.book_img,
-          inStock: book.data.book_author
+          inStock: book.data.book_stock
         });
       })
       .catch(console.log);
@@ -76,7 +76,7 @@ class BookDetails extends Component {
         <div className="browser-view">
           <div>
             <button onClick={() => this.props.history.goBack()}>Go Back</button>
-            <img src={this.state.img} />
+            <img src={this.state.img} alt="book-cover" />
             <p>Title: {this.state.title}</p>
             <p>Author: {this.state.author}</p>
             <p>Genre: {this.state.genre}</p>
@@ -86,7 +86,9 @@ class BookDetails extends Component {
               <button> Edit</button>
             </Link>
             <button onClick={this.delete}>Delete</button>
-            <button onClick={this.addToCart}>+ Add To Cart </button>
+            {this.state.inStock === "Yes" && (
+              <button onClick={this.addToCart}>+ Add To Cart </button>
+            )}
           </div>
         </div>
       </div>

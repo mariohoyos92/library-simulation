@@ -38,7 +38,6 @@ class BrowseView extends Component {
     axios
       .get("/api/books")
       .then(res => {
-        console.log(res);
         this.setState({ books: res.data });
       })
       .catch(console.log());
@@ -46,9 +45,7 @@ class BrowseView extends Component {
   //CUSTOM FUNCS
 
   handleInStock() {
-    this.setState({ inStock: !this.state.inStock }, () =>
-      console.log(this.state.inStock)
-    );
+    this.setState({ inStock: !this.state.inStock });
   }
 
   handleOutStock() {
@@ -77,57 +74,57 @@ class BrowseView extends Component {
         );
       });
 
-    this.state.genre !== "none" && this.state.genre
-      ? (bookList = this.state.books
-          .filter(book => book.book_genre === this.state.genre)
-          .map(item => {
-            return (
-              <Book
-                key={Math.random()}
-                title={item.book_title}
-                author={item.book_author}
-                img={item.book_img}
-                inStock={item.book_stock}
-                id={item.book_id}
-                src="browse"
-              />
-            );
-          }))
-      : "";
-    this.state.inStock
-      ? (bookList = this.state.books
-          .filter(book => book.book_stock === "Yes")
-          .map(item => {
-            return (
-              <Book
-                key={Math.random()}
-                title={item.book_title}
-                author={item.book_author}
-                img={item.book_img}
-                inStock={item.book_stock}
-                id={item.book_id}
-                src="browse"
-              />
-            );
-          }))
-      : "";
-    this.state.outStock
-      ? (bookList = this.state.books
-          .filter(book => book.book_stock === "No")
-          .map(item => {
-            return (
-              <Book
-                key={Math.random()}
-                title={item.book_title}
-                author={item.book_author}
-                img={item.book_img}
-                inStock={item.book_stock}
-                id={item.book_id}
-                src="browse"
-              />
-            );
-          }))
-      : "";
+    this.state.genre !== "none" &&
+      this.state.genre &&
+      (bookList = this.state.books
+        .filter(book => book.book_genre === this.state.genre)
+        .map(item => {
+          return (
+            <Book
+              key={Math.random()}
+              title={item.book_title}
+              author={item.book_author}
+              img={item.book_img}
+              inStock={item.book_stock}
+              id={item.book_id}
+              src="browse"
+            />
+          );
+        }));
+
+    this.state.inStock &&
+      (bookList = this.state.books
+        .filter(book => book.book_stock === "Yes")
+        .map(item => {
+          return (
+            <Book
+              key={Math.random()}
+              title={item.book_title}
+              author={item.book_author}
+              img={item.book_img}
+              inStock={item.book_stock}
+              id={item.book_id}
+              src="browse"
+            />
+          );
+        }));
+
+    this.state.outStock &&
+      (bookList = this.state.books
+        .filter(book => book.book_stock === "No")
+        .map(item => {
+          return (
+            <Book
+              key={Math.random()}
+              title={item.book_title}
+              author={item.book_author}
+              img={item.book_img}
+              inStock={item.book_stock}
+              id={item.book_id}
+              src="browse"
+            />
+          );
+        }));
 
     return (
       <div>

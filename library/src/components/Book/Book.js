@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import DetailsButton from "../DetailsButton/DetailsButton";
 
-import Navigation from "../Navigation/Navigation";
-
 //IMPORT CSS
 import "./Book.css";
 

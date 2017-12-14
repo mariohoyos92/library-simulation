@@ -71,10 +71,32 @@ app.post("/api/books", (req, res, next) => {
       req.body.description,
       req.body.img
     ])
-    .then(resp => res.status(200).json("book added!"));
+    .then(resp => res.status(200).json("book added!"))
+    .catch(console.log);
+});
+
+app.put("/api/books", (req, res, next) => {
+  app
+    .get("db")
+    .editBook([
+      req.body.title,
+      req.body.author,
+      req.body.genre,
+      req.body.description,
+      req.body.img,
+      req.body.id
+    ])
+    .then(response => {
+      res.status(200).json("Book edited");
+    })
+    .catch(console.log);
 });
 
 // Cart Endpoints
+
+app.post("/api/checkout", (req, res, next) => {
+  console.log(req.session, req.body);
+});
 
 app.get("/api/cart", (req, res, next) => {
   if (req.session.cart) {

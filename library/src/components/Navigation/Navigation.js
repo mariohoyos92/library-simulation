@@ -13,11 +13,9 @@ class Navigation extends Component {
   }
 
   handleLogout() {
-    console.log("hit");
     axios
       .post("/api/auth/logout", {})
       .then(res => {
-        console.log(res);
         return this.props.history.push("/");
       })
       .catch(console.log);
