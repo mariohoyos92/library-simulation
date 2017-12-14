@@ -96,6 +96,7 @@ app.put("/api/books", (req, res, next) => {
 
 app.post("/api/checkout", (req, res, next) => {
   req.body.idArray.forEach(bookId => {
+    req.session.cart = [];
     app
       .get("db")
       .addBookToShelf([req.session.ident, bookId])
@@ -154,6 +155,7 @@ app.post("/api/auth/register", (req, res, next) => {
     .then(response => {
       req.session.username = response[0].username;
       req.session.ident = response[0].id;
+      req.session.loggedin = true;
       res.status(200).json(response[0]);
     })
     .catch(res.status(500));
