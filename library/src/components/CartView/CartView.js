@@ -22,6 +22,12 @@ class CartView extends Component {
   //LIFESTYLE FUNCTIONS
   componentDidMount() {
     axios
+      .get("/api/logstatus")
+      .then(res => {
+        !res.data.loggedin && this.props.history.push("/");
+      })
+      .catch(console.log);
+    axios
       .get("/api/cart")
       .then(response => {
         this.setState({ cart: response.data });
@@ -42,7 +48,7 @@ class CartView extends Component {
   checkout() {
     let idArray = [];
     this.state.cart.forEach(element => {
-      idArray.push(element.id);
+      idArray.push(element.book_id);
     });
     axios
       .post("/api/checkout", { idArray: idArray })

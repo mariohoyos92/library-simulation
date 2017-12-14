@@ -95,7 +95,14 @@ app.put("/api/books", (req, res, next) => {
 // Cart Endpoints
 
 app.post("/api/checkout", (req, res, next) => {
-  console.log(req.session, req.body);
+  req.body.idArray.forEach(bookId => {
+    app
+      .get("db")
+      .addBookToShelf([req.session.ident, bookId])
+      .then(response => {})
+      .catch(console.log);
+  });
+  res.status(200).json("success");
 });
 
 app.get("/api/cart", (req, res, next) => {
@@ -168,6 +175,29 @@ app.post("/api/auth/login", (req, res, next) => {
 app.post("/api/auth/logout", (req, res, next) => {
   req.session.destroy();
   res.status(200).json("logged out");
+});
+
+// Shelf Endpoints
+
+app.get("/api/shelf", (req, res, next) => {
+  app
+    .get("db")
+    .getShelfForUser([req.session.ident])
+    .then(books => {
+      res.status(200).json(books);
+    })
+    .catch(console.log);
+});
+
+app.post("/api/shelf", (req, res, next) => {
+  app
+    .get("db")
+    .removeBookFromShelf([req.session.ident, req.body.id])
+    .then(books => {
+      console.log(books);
+      res.status(200).json(books);
+    })
+    .catch(console.log);
 });
 
 app.listen(port, () => {

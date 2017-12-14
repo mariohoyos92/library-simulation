@@ -27,6 +27,15 @@ class AddView extends Component {
   }
 
   //LIFESTYLE FUNCTIONS
+  componentDidMount() {
+    axios
+      .get("/api/logstatus")
+      .then(res => {
+        !res.data.loggedin && this.props.history.push("/");
+      })
+      .catch(console.log);
+  }
+
   handleTitle(e) {
     this.setState({ title: e.target.value });
   }
@@ -55,8 +64,6 @@ class AddView extends Component {
       .then(res => this.props.history.push("/browseview"))
       .catch(console.log);
   }
-
-  //CUSTOM FUNCS
 
   //RENDER
   render() {

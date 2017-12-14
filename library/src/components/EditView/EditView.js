@@ -22,6 +22,13 @@ class EditView extends Component {
 
   //LIFESTYLE FUNCTIONS
   componentDidMount() {
+    axios
+      .get("/api/logstatus")
+      .then(res => {
+        !res.data.loggedin && this.props.history.push("/");
+      })
+      .catch(console.log);
+
     const bookId = this.props.location.pathname.slice(
       this.props.location.pathname.indexOf(":") + 1
     );
