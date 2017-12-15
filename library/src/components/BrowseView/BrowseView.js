@@ -126,6 +126,50 @@ class BrowseView extends Component {
           );
         }));
 
+    this.state.inStock &&
+      this.state.genre !== "none" &&
+      this.state.genre &&
+      (bookList = this.state.books
+        .filter(
+          book =>
+            book.book_stock === "Yes" && book.book_genre === this.state.genre
+        )
+        .map(item => {
+          return (
+            <Book
+              key={Math.random()}
+              title={item.book_title}
+              author={item.book_author}
+              img={item.book_img}
+              inStock={item.book_stock}
+              id={item.book_id}
+              src="browse"
+            />
+          );
+        }));
+
+    this.state.outStock &&
+      this.state.genre !== "none" &&
+      this.state.genre &&
+      (bookList = this.state.books
+        .filter(
+          book =>
+            book.book_stock === "No" && book.book_genre === this.state.genre
+        )
+        .map(item => {
+          return (
+            <Book
+              key={Math.random()}
+              title={item.book_title}
+              author={item.book_author}
+              img={item.book_img}
+              inStock={item.book_stock}
+              id={item.book_id}
+              src="browse"
+            />
+          );
+        }));
+
     return (
       <div>
         <Navigation />

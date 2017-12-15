@@ -65,26 +65,39 @@ class AuthView extends Component {
   render() {
     return (
       <div className="authview-cont">
-        <div className="authview-card browser-card">
-          <img src={maroonLogo} alt="logo" />
-          <p className="label-font">Book Exchange </p>
-          <div className="authview-inputs">
-            Username{" "}
-            <input
-              type="text"
-              value={this.state.userName}
-              onChange={e => this.handleUsername(e)}
-            />
-            Password{" "}
-            <input
-              type="password"
-              value={this.state.userPass}
-              onChange={e => this.handlePassword(e)}
-            />
+        <div className="authview-card browser-card flex-center-col">
+          <div className="authview-head flex-center-col ">
+            <img src={maroonLogo} alt="logo" />
+            <p className="label-font">Book Exchange </p>
           </div>
-          <div className="auth-buttons">
-            <button onClick={() => this.handleRegister()}>Register</button>
-            <button onClick={() => this.handleLogin()}>Login </button>
+          <div className="authview-inputs border-rad">
+            <div className="user-pass">
+              <p className="light-tan">Username </p>
+              <input
+                type="text"
+                value={this.state.userName}
+                onChange={e => this.handleUsername(e)}
+              />
+            </div>
+            <div className="user-pass">
+              <p className="light-tan">Password</p>
+              <input
+                type="password"
+                value={this.state.userPass}
+                onChange={e => this.handlePassword(e)}
+              />
+            </div>
+            <div className="auth-buttons">
+              <button
+                className="red-button"
+                onClick={() => this.handleRegister()}
+              >
+                Register
+              </button>
+              <button className="red-button" onClick={() => this.handleLogin()}>
+                Login{" "}
+              </button>
+            </div>
           </div>
         </div>
       </div>

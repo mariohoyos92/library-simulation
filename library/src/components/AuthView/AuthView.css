@@ -6,7 +6,7 @@
   align-items: center;
 }
 
-.authview-card p {
+.authview-head p {
   color: #4e1e29;
   font-size: 2.5em;
 }
@@ -17,8 +17,56 @@
   width: 15vw;
 }
 
-.flex-center {
+.flex-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-center-row {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.authview-head {
+  padding: 5% 0;
+}
+
+.authview-inputs {
+  background-color: #242325;
+  height: 35vh;
+  width: 70%;
+}
+
+.border-rad {
+  border-radius: 10px;
+}
+
+.light-tan {
+  color: #c6b38e;
+}
+
+.user-pass {
+  margin-top: 10%;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.red-button {
+  background-color: #a52422;
+  color: #c6b38e;
+  border: none;
+  height: auto;
+  width: auto;
+  font-size: 1.5em;
+  font-family: "Alegreya", serif;
+}
+
+.auth-buttons {
+  margin-top: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
 }

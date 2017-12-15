@@ -13,7 +13,6 @@ module.exports = {
       .get("db")
       .removeBookFromShelf([req.session.ident, req.body.id])
       .then(books => {
-        console.log(books);
         res.status(200).json(books);
       })
       .catch(console.log);

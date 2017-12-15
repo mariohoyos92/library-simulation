@@ -2,7 +2,7 @@ module.exports = {
   checkOut: (req, res, next) => {
     req.body.idArray.forEach(bookId => {
       req.session.cart = [];
-      app
+      req.app
         .get("db")
         .addBookToShelf([req.session.ident, bookId])
         .then(response => {})

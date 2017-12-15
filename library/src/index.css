@@ -131,3 +131,11 @@ body {
   font-family: "Open Sans", sans-serif;
   background-color: #4e1e29;
 }
+
+.primary-font {
+  font-family: "Open Sans", sans-serif;
+}
+
+.secondary-font {
+  font-family: "Alegreya", serif;
+}
