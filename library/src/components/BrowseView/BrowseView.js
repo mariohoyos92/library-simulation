@@ -176,13 +176,21 @@ class BrowseView extends Component {
         <div className="browser-view">
           <div className="browser-card">
             <div className="browser-header">
-              <p> Browse Inventory</p>
+              <p className="secondary-font card-label"> Browse Inventory</p>
               <div className="filter-container">
-                In Stock: <input type="checkbox" onClick={this.handleInStock} />
-                Out Of Stock:<input
-                  type="checkbox"
-                  onClick={this.handleOutStock}
-                />
+                <div className="checks">
+                  <div>
+                    In Stock:{" "}
+                    <input type="checkbox" onClick={this.handleInStock} />
+                  </div>
+                  <div>
+                    {" "}
+                    Out Of Stock:<input
+                      type="checkbox"
+                      onClick={this.handleOutStock}
+                    />
+                  </div>
+                </div>
                 Genre:{" "}
                 <select onChange={this.handleGenre}>
                   <option value="none">None</option>
@@ -196,7 +204,7 @@ class BrowseView extends Component {
             <div className="browser-footer">
               {bookList}
               <Link to="/add">
-                <button>+ Add New Book</button>
+                <button className="red-button">+ Add New Book</button>
               </Link>
             </div>
           </div>

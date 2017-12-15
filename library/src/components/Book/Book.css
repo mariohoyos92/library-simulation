@@ -16,7 +16,7 @@
   justify-content: space-around;
   align-items: center;
   height: auto;
-  margin: 3vh 0;
+  margin: 3vh 5% 3vh 5%;
   padding: 0 2vw;
 }
 
@@ -32,6 +32,7 @@
   justify-content: space-around;
   align-items: flex-start;
   text-align: left;
+  margin-left: 5px;
 }
 .title {
   font-size: 2em;
