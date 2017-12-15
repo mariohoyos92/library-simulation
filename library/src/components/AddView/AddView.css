@@ -1,0 +1,36 @@
+.add-edit {
+  color: #fbffe6;
+  background-color: #242325;
+  border-radius: 10px;
+  height: 60vh;
+  margin: 2vh 5vw;
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-edit-left {
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.add-edit-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+.img-preview {
+  margin-top: 7vh;
+}
+
+.add-edit-label {
+  font-size: 1.5em;
+}
+.area {
+  width: 100%;
+  height: 10vh;
+}

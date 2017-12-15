@@ -83,39 +83,78 @@ class EditView extends Component {
     return (
       <div>
         <Navigation />
-        <button onClick={() => this.props.history.goBack()}> Go Back </button>
-        Title:{" "}
-        <input
-          type="text"
-          value={this.state.title}
-          onChange={e => this.handleTitle(e)}
-        />
-        Author:{" "}
-        <input
-          type="text"
-          value={this.state.author}
-          onChange={e => this.handleAuthor(e)}
-        />
-        Genre:{" "}
-        <select onChange={this.handleGenre}>
-          <option value="none">None</option>
-          <option value="Horror">Horror</option>
-          <option value="Fiction">Fiction</option>
-          <option value="NonFiction">NonFiction</option>
-        </select>
-        Description<input
-          type="text-area"
-          value={this.state.description}
-          onChange={e => this.handleDescription(e)}
-        />
-        Img:{" "}
-        <input
-          type="text"
-          value={this.state.img}
-          onChange={e => this.handleImg(e)}
-        />
-        <img src={this.state.img} alt="book-cover" />
-        <button onClick={this.handleEditBook}>Save Book</button>
+        <div className="browser-view">
+          <div className="browser-card">
+            <div className="details-header">
+              <div>
+                <p className="card-label secondary-font bold">Edit</p>
+              </div>
+              <button
+                className="border-rad"
+                onClick={() => this.props.history.goBack()}
+              >
+                {"<<"} Go Back
+              </button>
+            </div>
+            <div className="add-edit">
+              <div className="add-edit-left">
+                Img URL: <br />
+                <br />
+                <input
+                  type="text"
+                  value={this.state.img}
+                  onChange={e => this.handleImg(e)}
+                />
+                <div className="img-preview">
+                  {this.state.img && (
+                    <img
+                      className="img-size"
+                      src={this.state.img}
+                      alt="book-cover"
+                    />
+                  )}
+                </div>
+              </div>
+              <div className="add-edit-right">
+                <div className="add-edit-label">
+                  Title:{" "}
+                  <input
+                    type="text"
+                    value={this.state.title}
+                    onChange={e => this.handleTitle(e)}
+                  />
+                </div>
+                <div className="add-edit-label">
+                  Author:{" "}
+                  <input
+                    type="text"
+                    value={this.state.author}
+                    onChange={e => this.handleAuthor(e)}
+                  />
+                </div>
+                <div className="add-edit-label">
+                  Genre:{" "}
+                  <select onChange={this.handleGenre}>
+                    <option value="none">None</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="NonFiction">NonFiction</option>
+                  </select>
+                </div>
+                <span className="add-edit-label">Description:</span>
+                <textarea
+                  className="area"
+                  cols="10"
+                  value={this.state.description}
+                  onChange={e => this.handleDescription(e)}
+                />
+                <button className="red-button" onClick={this.handleEditBook}>
+                  Save Book
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
