@@ -22,7 +22,7 @@ class DetailsButton extends Component {
     return (
       <div>
         <Link to={`details/:${id}`}>
-          <button>Details</button>
+          <button className="red-button">Details</button>
         </Link>
       </div>
     );
