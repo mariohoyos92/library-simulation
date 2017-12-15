@@ -38,7 +38,10 @@ class Book extends Component {
       secondaryButton = "";
     } else if (src === "cart") {
       secondaryButton = (
-        <button onClick={() => handleRemoveFromCart(deleteKey)}>
+        <button
+          className="red-button"
+          onClick={() => handleRemoveFromCart(deleteKey)}
+        >
           - Remove From Cart
         </button>
       );

@@ -83,10 +83,27 @@ class CartView extends Component {
       <div>
         <Navigation />
         <div className="browser-view">
-          {cartDisplay}
-          {this.state.cart.length > 0 && (
-            <button onClick={this.checkout}>Checkout</button>
-          )}
+          <div className="browser-card">
+            <div className="details-header">
+              <div>
+                <p className="card-label secondary-font">Cart</p>
+              </div>
+              <button
+                className="border-rad"
+                onClick={() => this.props.history.goBack()}
+              >
+                {"<<"} Go Back
+              </button>
+            </div>
+            <div className="browser-footer">
+              {cartDisplay}
+              {this.state.cart.length > 0 && (
+                <button className="red-button" onClick={this.checkout}>
+                  Checkout
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     );

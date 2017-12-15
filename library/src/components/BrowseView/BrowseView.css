@@ -10,7 +10,7 @@
 .browser-card {
   background-color: #c6b38e;
   min-height: 80vh;
-  width: 80vh;
+  width: 60vw;
   border-radius: 10px;
 }
 
@@ -19,6 +19,7 @@
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding-top: 2%;
 }
 
 .browser-footer {
@@ -27,7 +28,7 @@
 }
 
 .card-label {
-  font-size: 2em;
+  font-size: 2.3em;
   color: #4e1e29;
 }
 
@@ -38,6 +39,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 50%;
 }
 
 .checks {

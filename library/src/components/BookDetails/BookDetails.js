@@ -81,21 +81,76 @@ class BookDetails extends Component {
       <div>
         <Navigation />
         <div className="browser-view">
-          <div>
-            <button onClick={() => this.props.history.goBack()}>Go Back</button>
-            <img src={this.state.img} alt="book-cover" />
-            <p>Title: {this.state.title}</p>
-            <p>Author: {this.state.author}</p>
-            <p>Genre: {this.state.genre}</p>
-            <p>In Stock: {this.state.inStock}</p>
-            <p>Description: {this.state.description}</p>
-            <Link to={`/edit/:${this.state.id}`}>
-              <button> Edit</button>
-            </Link>
-            <button onClick={this.delete}>Delete</button>
-            {this.state.inStock === "Yes" && (
-              <button onClick={this.addToCart}>+ Add To Cart </button>
-            )}
+          <div className="browser-card">
+            <div className="details-header">
+              <div>
+                <p className="card-label secondary-font">Details</p>
+              </div>
+              <button
+                className="border-rad"
+                onClick={() => this.props.history.goBack()}
+              >
+                {"<<"} Go Back
+              </button>
+            </div>
+            <div className="lightest-tan-back border-rad book-container">
+              <img className="img-size" src={this.state.img} alt="book-cover" />
+              <div className="details">
+                <div>
+                  <p>
+                    <span className="bold secondary-font label red">
+                      Title: {"  "}
+                    </span>
+                    {this.state.title}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span className="bold secondary-font label red">
+                      Author:{" "}
+                    </span>
+                    {this.state.author}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span className="bold secondary-font label red">
+                      Genre:{" "}
+                    </span>
+                    {this.state.genre}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span className="bold secondary-font label red">
+                      In Stock:{" "}
+                    </span>
+                    {this.state.inStock}
+                  </p>
+                </div>
+                <div>
+                  <p>
+                    <span className="bold secondary-font label red">
+                      Description: <br />
+                    </span>
+                    {this.state.description}
+                  </p>
+                </div>
+              </div>
+              <div className="book-right">
+                <Link to={`/edit/:${this.state.id}`}>
+                  <button className="red-button"> Edit</button>
+                </Link>
+                <button className="red-button" onClick={this.delete}>
+                  Delete
+                </button>
+                {this.state.inStock === "Yes" && (
+                  <button className="red-button" onClick={this.addToCart}>
+                    + Add To Cart{" "}
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

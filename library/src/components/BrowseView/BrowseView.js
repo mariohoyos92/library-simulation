@@ -191,13 +191,15 @@ class BrowseView extends Component {
                     />
                   </div>
                 </div>
-                Genre:{" "}
-                <select onChange={this.handleGenre}>
-                  <option value="none">None</option>
-                  <option value="Horror">Horror</option>
-                  <option value="Fiction">Fiction</option>
-                  <option value="NonFiction">NonFiction</option>
-                </select>
+                <div>
+                  Genre:{" "}
+                  <select onChange={this.handleGenre}>
+                    <option value="none">None</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="NonFiction">NonFiction</option>
+                  </select>
+                </div>
               </div>
             </div>
             <div className="browser-display" />
