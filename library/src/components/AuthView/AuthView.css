@@ -13,7 +13,7 @@
 
 .authview-card img {
   margin-top: 5vh;
-  height: 15vh;
+  min-height: 15vh;
   width: 15vw;
 }
 
@@ -35,14 +35,18 @@
 
 .authview-inputs {
   background-color: #242325;
-  height: 35vh;
+  min-height: 35vh;
   width: 70%;
+  margin-bottom: 5vh;
 }
 
 .border-rad {
   border-radius: 10px;
 }
 
+.auth-input {
+  width: 40%;
+}
 .light-tan {
   color: #c6b38e;
 }
@@ -69,4 +73,5 @@
   text-align: center;
   display: flex;
   justify-content: space-around;
+  padding-bottom: 3vh;
 }

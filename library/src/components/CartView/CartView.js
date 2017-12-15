@@ -77,7 +77,7 @@ class CartView extends Component {
           );
         })
       ) : (
-        <p>Your Cart Is Empty!</p>
+        <p className="bold">Your Cart Is Empty!</p>
       );
     return (
       <div>
@@ -86,7 +86,7 @@ class CartView extends Component {
           <div className="browser-card">
             <div className="details-header">
               <div>
-                <p className="card-label secondary-font">Cart</p>
+                <p className="card-label secondary-font bold">Cart</p>
               </div>
               <button
                 className="border-rad"
@@ -95,8 +95,8 @@ class CartView extends Component {
                 {"<<"} Go Back
               </button>
             </div>
+            {cartDisplay}
             <div className="browser-footer">
-              {cartDisplay}
               {this.state.cart.length > 0 && (
                 <button className="red-button" onClick={this.checkout}>
                   Checkout

@@ -72,16 +72,18 @@ class AuthView extends Component {
           </div>
           <div className="authview-inputs border-rad">
             <div className="user-pass">
-              <p className="light-tan">Username </p>
+              <p className="light-tan">Username: </p>
               <input
+                className="auth-input"
                 type="text"
                 value={this.state.userName}
                 onChange={e => this.handleUsername(e)}
               />
             </div>
             <div className="user-pass">
-              <p className="light-tan">Password</p>
+              <p className="light-tan">Password:</p>
               <input
+                className="auth-input"
                 type="password"
                 value={this.state.userPass}
                 onChange={e => this.handlePassword(e)}

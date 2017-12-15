@@ -70,7 +70,22 @@ class MyShelf extends Component {
     return (
       <div>
         <Navigation />
-        <div className="browser-view">{shelfDisplay}</div>
+        <div className="browser-view">
+          <div className="browser-card">
+            <div className="details-header">
+              <div>
+                <p className="card-label secondary-font bold">My Shelf</p>
+              </div>
+              <button
+                className="border-rad"
+                onClick={() => this.props.history.goBack()}
+              >
+                {"<<"} Go Back
+              </button>
+            </div>
+            {shelfDisplay}
+          </div>
+        </div>
       </div>
     );
   }

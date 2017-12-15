@@ -47,7 +47,9 @@ class Book extends Component {
       );
     } else if (src === "shelf") {
       secondaryButton = (
-        <button onClick={() => returnBook(id)}>- Return Book</button>
+        <button className="red-button" onClick={() => returnBook(id)}>
+          - Return Book
+        </button>
       );
     }
 
