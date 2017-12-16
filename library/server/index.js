@@ -78,6 +78,12 @@ app.post("/api/auth/logout", logout);
 app.get("/api/shelf", getShelf);
 app.post("/api/shelf", removeFromShelf);
 
+const path = require("path");
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/../build/index.html"));
+});
+
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
