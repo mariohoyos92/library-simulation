@@ -1,0 +1,1 @@
+SELECT * FROM books INNER JOIN shelf ON books.book_id = shelf.shelf_book INNER JOIN libraryusers ON libraryusers.id = shelf.shelf_user WHERE libraryusers.id = $1;

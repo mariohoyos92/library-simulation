@@ -1,0 +1,1 @@
+INSERT INTO libraryusers (username, password) VALUES ($1, $2) RETURNING id, username;

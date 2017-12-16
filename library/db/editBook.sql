@@ -1,0 +1,1 @@
+UPDATE books SET book_title = $1, book_author = $2, book_genre = $3, book_description = $4, book_img = $5 WHERE book_id = $6 RETURNING book_id, book_title, book_author, book_genre, book_stock, book_description, book_img;
