@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { json } = require("body-parser");
 const cors = require("cors");
@@ -34,17 +35,17 @@ const { getShelf, removeFromShelf } = require("./controllers/shelfController");
 
 const app = express();
 
-// app.use(express.static(`__dirname/build`));
+app.use(express.static(`__dirname/build`));
 
 app.use(
   session({
-    secret,
+    secret: secret || process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
   })
 );
 
-massive(connectionString)
+massive(connectionString || process.env.DATABASE_URL)
   .then(db => app.set("db", db))
   .catch(console.log);
 
