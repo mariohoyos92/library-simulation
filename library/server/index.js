@@ -6,7 +6,6 @@ const session = require("express-session");
 const massive = require("massive");
 
 // CONFIG VARIABLES
-const { secret, connectionString } = require("../config");
 
 // IMPORT CONTROLLERS
 
@@ -39,13 +38,13 @@ app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || secret,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
   })
 );
 
-massive(process.env.DATABASE_URL || connectionString)
+massive(process.env.DATABASE_URL)
   .then(db => app.set("db", db))
   .catch(console.log);
 
