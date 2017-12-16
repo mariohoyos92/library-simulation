@@ -35,7 +35,7 @@ const { getShelf, removeFromShelf } = require("./controllers/shelfController");
 
 const app = express();
 
-app.use(express.static(`__dirname/build`));
+app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
@@ -79,7 +79,7 @@ app.post("/api/auth/logout", logout);
 app.get("/api/shelf", getShelf);
 app.post("/api/shelf", removeFromShelf);
 
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
