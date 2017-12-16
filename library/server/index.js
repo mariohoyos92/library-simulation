@@ -39,13 +39,13 @@ app.use(express.static(`${__dirname}/../build`));
 
 app.use(
   session({
-    secret: secret || process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || secret,
     resave: false,
     saveUninitialized: false
   })
 );
 
-massive(connectionString || process.env.DATABASE_URL)
+massive(process.env.DATABASE_URL || connectionString)
   .then(db => app.set("db", db))
   .catch(console.log);
 
