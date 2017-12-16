@@ -1,0 +1,1 @@
+web: node ./library/server/index.js
