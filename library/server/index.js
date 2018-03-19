@@ -4,6 +4,7 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
 const massive = require("massive");
+const compression = require("compression");
 
 // CONFIG VARIABLES
 
@@ -33,6 +34,7 @@ const { getShelf, removeFromShelf } = require("./controllers/shelfController");
 //-----------------------------------------------------------------------------Begin Server----------------------------------------------
 
 const app = express();
+app.use(compression());
 
 app.use(express.static(`${__dirname}/../build`));
 
